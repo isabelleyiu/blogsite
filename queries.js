@@ -27,7 +27,18 @@ const getArticleById = (req, res) => {
   }); 
 }
 
+const addArticle = (req, res) => {
+  const { title, author, content } = req.body;
+  pool.query('INSERT INTO articles (title, author, content) VALUES($1, $2, $3)', [title, author, content], (err, results) => {
+    if(err) {
+      throw err;
+    }
+    res.status(201).send(`Article added with id: ${results.insertId}`);
+  });
+}
+
 module.exports = {
   getArticles,
-  getArticleById
+  getArticleById,
+  addArticle
 };

@@ -18,6 +18,9 @@ app.get('/articles', db.getArticles);
 // get one article by Id
 app.get('/articles/:id', db.getArticleById);
 
+// add new article
+app.post('/articles', db.addArticle);
+
 app.listen(3000, () => {
   console.log('blog server is running');
 });
