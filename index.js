@@ -21,6 +21,9 @@ app.get('/articles/:id', db.getArticleById);
 // add new article
 app.post('/articles', db.addArticle);
 
+// update article
+app.put('/articles/:id', db.updateArticle);
+
 app.listen(3000, () => {
   console.log('blog server is running');
 });

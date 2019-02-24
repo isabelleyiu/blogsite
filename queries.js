@@ -37,8 +37,22 @@ const addArticle = (req, res) => {
   });
 }
 
+const updateArticle = (req, res) => {
+  const id = req.params.id;
+  const { title, author, content } = req.body;
+  pool.query('UPDATE articles SET title = $1, author = $2, content = $3 WHERE id = $4',
+   [title, author, content, id],
+    (err, results) => {
+    if(err) {
+      throw err;
+    } 
+    res.status(200).send(`Article is updated with ID: ${id}`);
+  });
+}
+
 module.exports = {
   getArticles,
   getArticleById,
-  addArticle
+  addArticle,
+  updateArticle
 };
