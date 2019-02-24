@@ -56,7 +56,7 @@ const deleteArticle = (req, res) => {
     if(err) {
       throw err;
     } 
-    res.status(200).send(`User deleted with ID: ${id}`);
+    res.status(200).send(`Article deleted with ID: ${id}`);
   });
 }
 
