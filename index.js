@@ -15,14 +15,17 @@ app.get('/', (req, res) => {
 // display all articels
 app.get('/articles', db.getArticles);
 
-// get one article by Id
-app.get('/articles/:id', db.getArticleById);
-
 // add new article
 app.post('/articles', db.addArticle);
 
-// update article
+// get one article by Id
+app.get('/articles/:id', db.getArticleById);
+
+// update article by Id
 app.put('/articles/:id', db.updateArticle);
+
+// delete article by Id
+app.delete('/articles/:id', db.deleteArticle);
 
 app.listen(3000, () => {
   console.log('blog server is running');

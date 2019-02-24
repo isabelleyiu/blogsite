@@ -50,9 +50,20 @@ const updateArticle = (req, res) => {
   });
 }
 
+const deleteArticle = (req, res) => {
+  const id = req.params.id;
+  pool.query('DELETE FROM articles WHERE id = $1', [id], (err, results) => {
+    if(err) {
+      throw err;
+    } 
+    res.status(200).send(`User deleted with ID: ${id}`);
+  });
+}
+
 module.exports = {
   getArticles,
   getArticleById,
   addArticle,
-  updateArticle
+  updateArticle,
+  deleteArticle
 };
